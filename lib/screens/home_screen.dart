@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'details_screen.dart';
+import '../widgets/action_button.dart';
+import '../widgets/header_widget.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -63,19 +65,6 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  Widget _buildActionButton({
-    required VoidCallback onPressed,
-    required String text,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: ElevatedButton(
-        onPressed: onPressed,
-        child: Text(text),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,36 +75,32 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Counter: $_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            Text(
-              _description,
-              style: Theme.of(context).textTheme.bodyLarge,
+            HeaderWidget(
+              counter: _counter,
+              description: _description,
             ),
             const SizedBox(height: 24),
-            _buildActionButton(
+            ActionButton(
               onPressed: _incrementCounter,
               text: 'Increase',
             ),
-            _buildActionButton(
+            ActionButton(
               onPressed: _decrementCounter,
               text: 'Decrease',
             ),
-            _buildActionButton(
+            ActionButton(
               onPressed: _resetCounter,
               text: 'Reset Counter',
             ),
-            _buildActionButton(
+            ActionButton(
               onPressed: _changeDescription,
               text: 'Change text',
             ),
-            _buildActionButton(
+            ActionButton(
               onPressed: _toggleDescription,
               text: 'Toggle description',
             ),
-            _buildActionButton(
+            ActionButton(
               onPressed: _goToDetails,
               text: 'Go to details',
             ),
